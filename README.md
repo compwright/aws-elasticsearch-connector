@@ -26,14 +26,13 @@ const { AmazonConnection } = require('aws-elasticsearch-connector');
 
 const client = new Client({
   node: 'my-elasticsearch-cluster.us-east-1.es.amazonaws.com',
-  Connection: AmazonConnection,
-  awsConfig: {
+  Connection: AmazonConnection({
     credentials: {
       accessKeyId: 'foo',
       secretAccessKey: 'bar',
       sessionToken: 'baz' // optional
     }
-  }
+  })
 });
 ```
 
@@ -51,7 +50,7 @@ AWS.config.update({
 
 const client = new Client({
   node: 'my-elasticsearch-cluster.us-east-1.es.amazonaws.com',
-  Connection: AmazonConnection
+  Connection: AmazonConnection()
 });
 ```
 
@@ -69,7 +68,7 @@ const { AmazonConnection } = require('aws-elasticsearch-connector');
 
 const client = new Client({
   node: 'my-elasticsearch-cluster.us-east-1.es.amazonaws.com',
-  Connection: AmazonConnection,
+  Connection: AmazonConnection(),
 });
 ```
 
@@ -86,7 +85,7 @@ const { AmazonConnection, AmazonTransport } = require('aws-elasticsearch-connect
 
 const client = new Client({
   node: 'my-elasticsearch-cluster.us-east-1.es.amazonaws.com',
-  Connection: AmazonConnection,
+  Connection: AmazonConnection(),
   Transport: AmazonTransport
 });
 ```
