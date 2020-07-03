@@ -25,7 +25,9 @@ class AmazonTransport extends Transport {
 
     // Callback support
     this.awaitAwsCredentials()
-      .then(() => super.request(params, options, callback))
+      .then(() => {
+        super.request(params, options, callback)
+      })
       .catch(callback)
   }
 }
