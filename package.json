@@ -54,7 +54,7 @@
     "aws4": "^1.10.0"
   },
   "peerDependencies": {
-    "@elastic/elasticsearch": ">=7.8.0",
+    "@elastic/elasticsearch": ">=6.8.8",
     "aws-sdk": "^2.709.0"
   },
   "devDependencies": {

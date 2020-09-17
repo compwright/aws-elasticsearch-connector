@@ -16,11 +16,16 @@ module.exports = awsConfig => {
       // the port number which will cause signature verification to fail
       req.headers.host = req.hostname
 
+      let contentLength = 0
       if (params.body) {
-        req.headers['content-length'] = Buffer.byteLength(params.body, 'utf8')
+        contentLength = Buffer.byteLength(params.body, 'utf8')
         req.body = params.body
-      } else {
-        req.headers['content-length'] = 0
+      }
+      const lengthHeader = 'content-length'
+      const headerFound = Object.keys(req.headers).find(
+        header => header.toLowerCase() === lengthHeader)
+      if (headerFound === undefined) {
+        req.headers[lengthHeader] = contentLength
       }
 
       return aws4.sign(req, awsConfig.credentials)
