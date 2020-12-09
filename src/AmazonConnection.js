@@ -8,6 +8,10 @@ module.exports = awsConfig => {
 
       req.service = 'es'
 
+      if (awsConfig.region) {
+        req.region = awsConfig.region
+      }
+
       if (!req.headers) {
         req.headers = {}
       }
