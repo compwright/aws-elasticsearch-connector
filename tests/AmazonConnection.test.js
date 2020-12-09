@@ -76,16 +76,16 @@ describe('AmazonConnection', function () {
     })
 
     it('sets the region when region is configured in the AWS config object', function () {
-      const awsConfig = new AWS.Config({
+      const config = new AWS.Config({
         accessKeyId: 'foo',
         region: 'us-west-2',
         secretAccessKey: 'bar',
         sessionToken: 'baz'
       })
 
-      const AmazonConnection = require('../src/AmazonConnection')(awsConfig)
+      const Connection = require('../src/AmazonConnection')(config)
 
-      const connector = new AmazonConnection({
+      const connector = new Connection({
         url: new URL('https://foo.us-west-2.es.amazonaws.com')
       })
 

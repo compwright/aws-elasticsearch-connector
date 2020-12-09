@@ -11,7 +11,7 @@ module.exports = awsConfig => {
       if (awsConfig.region) {
         req.region = awsConfig.region
       }
-      
+
       if (!req.headers) {
         req.headers = {}
       }
