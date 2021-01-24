@@ -19,6 +19,9 @@ module.exports = awsConfig => {
       // Fix the Host header, since HttpConnector.makeReqParams() appends
       // the port number which will cause signature verification to fail
       req.headers.host = req.hostname
+      if(req.headers.Host) {
+        delete req.headers.Host;
+      }
 
       // This fix allows the connector to work with the older 6.x elastic branch.
       // The problem with that version, is that the Transport object would add a
